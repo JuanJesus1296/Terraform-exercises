@@ -1,11 +1,10 @@
-# Primer proyecto con Terraform en Azure
+# Control de versiones del proveedor
 
-**Objetivo:** ciclo de vida básico `init/plan/apply/destroy`.
+**Objetivo:** usar `required_providers` y `.terraform.lock.hcl`.
 
-1. Crea un Resource Group en una región cercana a ti.
-2. Dentro del mismo, despliega un Storage Account (usando SKU `Standard_LRS`).
-3. Usa variables para región y nombres.
-4. Muestra con outputs el nombre del Storage Account y el ID del RG.
-5. Corre `terraform init`, `plan`, `apply` y finalmente `destroy`.
+1. En el bloque `terraform` declara `required_providers` para `azurerm` con versión `~> 3.0`.
+2. Observa cómo se genera el `.terraform.lock.hcl`.
+3. Cambia el constraint a otra versión (`~> 4.0`) y corre `terraform init -upgrade`.
+4. Explica qué cambia en el lock file.
 
-**Conceptos:** provider `azurerm`, variables, outputs, ciclo de vida básico.
+**Conceptos:** bloqueo de versiones, reproducibilidad.
