@@ -1,9 +1,11 @@
-output "StorageAccount_name" {
-  value       = azurerm_storage_account.AZSATerraform.name
-  description = "Nombre de Storage Account"
+output "id_vnet" {
+  value = module.terraform-azurerm-network.IDVnet
 }
 
-output "RG_name" {
-  value       = azurerm_resource_group.RGTerraform.name
-  description = "Nombre de Resource Group"
+output "id_subnet" {
+  value = module.terraform-azurerm-network.IDSubnet01
+}
+
+output "id_containerInstance" {
+  value = module.terraform-azurerm-compute.ID_CI
 }

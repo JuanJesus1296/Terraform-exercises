@@ -1,21 +1,16 @@
-variable "RGTerraform_region" {
-  type    = string
-  default = "East US 2"
-}
-
 variable "RGTerraform_name" {
   type    = string
   default = "RGTerraform"
 }
 
-variable "VNTerraform_name" {
-  type    = string
-  default = "terraform-network"
-}
-
 variable "VNTerraform_location" {
   type    = string
   default = "East US 2"
+}
+
+variable "VNTerraform_name" {
+  type    = string
+  default = "terraform-network"
 }
 
 variable "SNTerraform01_name" {
@@ -31,13 +26,4 @@ variable "VNTerraform_cidr" {
 variable "SNTerraform01_cidr" {
   type    = list(string)
   default = ["10.0.1.0/24"]
-}
-
-variable "CITerraform_container_name" {
-  type = string
-}
-
-variable "CITerraform_container_image" {
-  type    = string
-  default = "nginx"
 }
