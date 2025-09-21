@@ -1,43 +1,14 @@
-variable "RGTerraform_region" {
+variable "region" {
   type    = string
   default = "East US 2"
 }
 
-variable "RGTerraform_name" {
+variable "RG_name" {
   type    = string
   default = "RGTerraform"
 }
 
-variable "VNTerraform_name" {
+variable "StorageAccount_name" {
   type    = string
-  default = "terraform-network"
-}
-
-variable "VNTerraform_location" {
-  type    = string
-  default = "East US 2"
-}
-
-variable "SNTerraform01_name" {
-  type    = string
-  default = "terraform-subnet-01"
-}
-
-variable "VNTerraform_cidr" {
-  type    = list(string)
-  default = ["10.0.0.0/8"]
-}
-
-variable "SNTerraform01_cidr" {
-  type    = list(string)
-  default = ["10.0.1.0/24"]
-}
-
-variable "CITerraform_container_name" {
-  type = string
-}
-
-variable "CITerraform_container_image" {
-  type    = string
-  default = "nginx"
+  default = "azsaterraform"
 }

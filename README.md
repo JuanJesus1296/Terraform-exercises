@@ -1,17 +1,20 @@
-# Crear un módulo propio
+# Backend remoto en Azure
 
-**Objetivo:** trabajar con módulos, inputs/outputs.
+**Objetivo:**  usar `azurerm` backend para el state.
 
-1. Crea un módulo `network/` que despliegue una Virtual Network y una Subnet.
+1. Crea manualmente (o con Terraform) un Storage Account + Container llamado `tfstate`.
+2. Configura en el bloque `terraform`:
+    ```hcl
+    backend "azurerm" {
+      resource_group_name   = "<RG>"
+      storage_account_name  = "<STORAGE>"
+      container_name        = "tfstate"
+      key                   = "terraform.tfstate"
+    }
+    ```
+3. Haz `terraform init -migrate-state` para mover el state al backend remoto.
+4. Clona el proyecto en otra carpeta, corre `plan` en paralelo para ver cómo Azure bloquea el state.
 
-    * Variables: nombre, dirección CIDR.
-    * Output: ID de la VNet y de la Subnet.
+**Conceptos:** estado remoto, locking, colaboración.
 
-2. Crea un módulo `compute/` que despliegue una Azure Container Instance (ACI) dentro de la Subnet.
-
-    * Variables: nombre de contenedor, imagen (por defecto `nginx`).
-    * Output: ID de Azure Container Instance.
-
-3. En el main usa ambos módulos y conéctalos (el output de `network` pasa como input a `compute`).
-
-**Conceptos:** módulos, variables, outputs, reusabilidad.
+**Solución:** [Repositorio Github](https://github.com/JuanJesus1296/Terraform-exercises/tree/v1.0-ejercicio_04)
