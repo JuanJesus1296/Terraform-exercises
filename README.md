@@ -1,20 +1,17 @@
-# Backend remoto en Azure
+# Crear Resource Groups con for_each y acceder a un índice específico
 
-**Objetivo:**  usar `azurerm` backend para el state.
+Tienes una lista de nombres de departamentos en la nube y quieres crear un Resource Group para cada uno de ellos en Azure usando `for_each`.
 
-1. Crea manualmente (o con Terraform) un Storage Account + Container llamado `tfstate`.
-2. Configura en el bloque `terraform`:
-    ```hcl
-    backend "azurerm" {
-      resource_group_name   = "<RG>"
-      storage_account_name  = "<STORAGE>"
-      container_name        = "tfstate"
-      key                   = "terraform.tfstate"
-    }
-    ```
-3. Haz `terraform init -migrate-state` para mover el state al backend remoto.
-4. Clona el proyecto en otra carpeta, corre `plan` en paralelo para ver cómo Azure bloquea el state.
+Debes:
 
-**Conceptos:** estado remoto, locking, colaboración.
+1. Crear un recurso por cada elemento de la lista.
+2. Mostrar como output el nombre del tercer recurso creado.
+3. Mostrar un output con todos los nombres de los recursos creados.
 
-**Solución:** [Repositorio Github](https://github.com/JuanJesus1296/Terraform-exercises/tree/v1.0-ejercicio_04)
+## Lista de departamentos
+```hcl
+variable "departamentos" {
+  type    = list(string)
+  default = ["ventas", "soporte", "sistemas"]
+}
+```

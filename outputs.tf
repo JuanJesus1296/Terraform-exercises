@@ -1,11 +1,7 @@
-output "id_vnet" {
-  value = module.terraform-azurerm-network.IDVnet
+output "third_resource" {
+  value = azurerm_resource_group.RGTerraform[2].name
 }
 
-output "id_subnet" {
-  value = module.terraform-azurerm-network.IDSubnet01
-}
-
-output "id_containerInstance" {
-  value = module.terraform-azurerm-compute.ID_CI
+output "all_resources" {
+  value = azurerm_resource_group.RGTerraform[*].name
 }
