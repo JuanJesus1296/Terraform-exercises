@@ -1,17 +1,11 @@
-# Crear Resource Groups con for_each y acceder a un índice específico
+# Importar recursos existentes
 
-Tienes una lista de nombres de departamentos en la nube y quieres crear un Resource Group para cada uno de ellos en Azure usando `for_each`.
+**Objetivo:**  practicar terraform import.
 
-Debes:
+1. Crea un Resource Group desde el portal de Azure.
+2. Define en Terraform solo el bloque vacío del RG.
+3. Usa terraform import azurerm_resource_group.rg /subscriptions/<SUB_ID>/resourceGroups/<NAME>.
+4. Haz terraform state show para ver el recurso.
+5. Corre terraform plan para verificar que la definición coincide (o ajusta config para que sea “in sync”).
 
-1. Crear un recurso por cada elemento de la lista.
-2. Mostrar como output el nombre del tercer recurso creado.
-3. Mostrar un output con todos los nombres de los recursos creados.
-
-## Lista de departamentos
-```hcl
-variable "departamentos" {
-  type    = list(string)
-  default = ["ventas", "soporte", "sistemas"]
-}
-```
+**Conceptos:** importación, estado, reconciliación de config.

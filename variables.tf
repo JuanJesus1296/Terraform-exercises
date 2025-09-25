@@ -1,4 +1,4 @@
-variable "departamentos" {
-  type    = list(string)
-  default = ["ventas", "soporte", "sistemas"]
+variable "RG_name" {
+  type    = string
+  default = "cert-az-104"
 }
