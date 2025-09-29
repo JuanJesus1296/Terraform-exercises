@@ -1,9 +1,14 @@
-import {
-  id = "/subscriptions/05b9fccf-7957-45d9-8014-9c0a216f8705/resourceGroups/cert-az-104"
-  to = azurerm_resource_group.RGTerraform
+resource "azurerm_resource_group" "RG_Terraform" {
+  name     = "RG-Terraform"
+  location = "West Europe"
 }
 
-resource "azurerm_resource_group" "RGTerraform" {
-  name = var.RG_name
-  location = "eastus"
+resource "azurerm_storage_account" "STAC_Terraform" {
+  for_each = var.storages
+
+  name                     = each.value
+  resource_group_name      = azurerm_resource_group.RG_Terraform.name
+  location                 = azurerm_resource_group.RG_Terraform.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }

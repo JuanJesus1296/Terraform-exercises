@@ -1,11 +1,21 @@
-# Importar recursos existentes
+## Variables complejas y `for_each`
 
-**Objetivo:**  practicar terraform import.
+**Objetivo:**  usar tipos de datos, `for_each`, funciones.
 
-1. Crea un Resource Group desde el portal de Azure.
-2. Define en Terraform solo el bloque vacío del RG.
-3. Usa terraform import azurerm_resource_group.rg /subscriptions/<SUB_ID>/resourceGroups/<NAME>.
-4. Haz terraform state show para ver el recurso.
-5. Corre terraform plan para verificar que la definición coincide (o ajusta config para que sea “in sync”).
+1. Define una variable tipo map para crear varios Storage Accounts:
 
-**Conceptos:** importación, estado, reconciliación de config.
+```hcl
+variable "storages" {
+  type = map(string)
+  default = {
+    sa1 = "stac-chokeco-01"
+    sa2 = "stac-chokeco-02"
+  }
+}
+```
+
+2. Usa `for_each` para crear un Storage Account por cada entrada en el map.
+3. Usa una función como `upper()` en el nombre de los SA.
+4. Haz output con todos los nombres.
+
+**Conceptos:** tipos complejos, funciones, for_each, outputs dinámicos.
