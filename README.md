@@ -15,7 +15,7 @@ variable "storages" {
 ```
 
 2. Usa `for_each` para crear un Storage Account por cada entrada en el map.
-3. Usa una función como `upper()` en el nombre de los SA.
+3. Usa una función como `lower()` en el nombre de los SA.
 4. Haz output con todos los nombres.
 
 **Conceptos:** tipos complejos, funciones, for_each, outputs dinámicos.
