@@ -1,21 +1,12 @@
-## Variables complejas y `for_each`
+## Terraform Cloud
+*Terraform Cloud + Azure*
 
-**Objetivo:**  usar tipos de datos, `for_each`, funciones.
+**Objetivo:** integración con Terraform Cloud.
 
-1. Define una variable tipo map para crear varios Storage Accounts:
+1. Crea una cuenta gratuita en Terraform Cloud.
+2. Conecta un Workspace a un repositorio GitHub con tu proyecto del Ejercicio 1 o 3.
+3. Configura variables de entorno (ejemplo: `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, `ARM_SUBSCRIPTION_ID`, `ARM_TENANT_ID`).
+4. Lanza un `plan` y `apply` desde Terraform Cloud.
+5. Observa diferencias con ejecución local (state remoto, colas, variables sensibles).
 
-```hcl
-variable "storages" {
-  type = map(string)
-  default = {
-    sa1 = "stac-chokeco-01"
-    sa2 = "stac-chokeco-02"
-  }
-}
-```
-
-2. Usa `for_each` para crear un Storage Account por cada entrada en el map.
-3. Usa una función como `lower()` en el nombre de los SA.
-4. Haz output con todos los nombres.
-
-**Conceptos:** tipos complejos, funciones, for_each, outputs dinámicos.
+**Conceptos:** Terraform Cloud, workspaces, seguridad.

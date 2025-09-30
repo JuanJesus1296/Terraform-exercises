@@ -5,6 +5,15 @@ terraform {
       version = "~>4.0"
     }
   }
+
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "Chokeco"
+
+    workspaces {
+      name = "learn-terraform"
+    }
+  }
 }
 
 provider "azurerm" {
