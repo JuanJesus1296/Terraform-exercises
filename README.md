@@ -1,12 +1,9 @@
-## Terraform Cloud
-*Terraform Cloud + Azure*
+## Validación
+*Validación de variables en Azure - a partir del ejercicio 1*
 
-**Objetivo:** integración con Terraform Cloud.
+**Objetivo:** aprender a usar `validation` en variables para imponer restricciones antes del `plan/apply`.
 
-1. Crea una cuenta gratuita en Terraform Cloud.
-2. Conecta un Workspace a un repositorio GitHub con tu proyecto del Ejercicio 1 o 3.
-3. Configura variables de entorno (ejemplo: `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, `ARM_SUBSCRIPTION_ID`, `ARM_TENANT_ID`).
-4. Lanza un `plan` y `apply` desde Terraform Cloud.
-5. Observa diferencias con ejecución local (state remoto, colas, variables sensibles).
+Vas a crear un Storage Account en Azure, pero quieres controlar:
 
-**Conceptos:** Terraform Cloud, workspaces, seguridad.
+1. Que el nombre cumpla las reglas de Azure (solo letras minúsculas y números, entre 3 y 24 caracteres).
+2. Que la ubicación (region) sea una de las permitidas (`eastus`, `westus2`, `westeurope`).
